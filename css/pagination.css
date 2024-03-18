@@ -1,0 +1,33 @@
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+    overflow-x: auto; /* Bật thanh cuộn ngang nếu cần */
+}
+
+.main-nav {
+    display: flex; /* Sử dụng flexbox để xếp các nút ngang */
+    flex-wrap: nowrap; /* Đảm bảo các nút không bị ngắt dòng */
+    justify-content: center; /* Căn giữa các nút */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li {
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+}
+
+.pagination-container .main-nav li a {
+    text-decoration: none;
+    color: #333;
+    padding: 4px 8px ; /* Giảm padding để làm cho các ô phân trang nhỏ hơn */
+    margin: 2px; /* Đặt margin nhỏ để tạo khoảng cách giữa các ô phân trang */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: none;
+}
+
+.pagination-container .main-nav li.active a {
+    background-color: #4CAF50;
+    color: white;
+}

@@ -1,0 +1,80 @@
+/* CSS cho header */
+header {
+    background-color: #beb1b1; /* Màu hồng nhạt */
+    padding: 15px 80px; /* Điều chỉnh kích thước padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    display: flex;
+    justify-content: space-between; /* Căn các phần tử về hai phía */
+    align-items: center; /* Căn các phần tử theo chiều dọc */
+
+}
+
+.logo img {
+    width: 70px; /* Kích thước của logo */
+    height: auto; /* Chiều cao tự động điều chỉnh theo tỉ lệ */
+}
+
+.navbar {
+    display: flex;
+    align-items: center; /* Căn các phần tử theo chiều dọc giữa thanh điều hướng */
+}
+
+.navbar a {
+    color: #5a393d; /* Màu hồng đậm */
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 20px; /* Điều chỉnh kích thước padding */
+    border-radius: 20px; /* Tạo hiệu ứng bo tròn */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi màu khi hover */
+    font-weight: bold; /* Làm chữ đậm */
+}
+
+.navbar a:hover {
+    background-color: #918081; /* Màu nền nhấn khi di chuột qua */
+    color: #fff; /* Màu chữ trắng khi di chuột qua */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #6f6363; /* Màu nền cho ô tìm kiếm */
+    padding: 8px 15px;
+    border-radius: 20px; /* Tạo hiệu ứng bo tròn */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ nhẹ */
+}
+
+.search-box input[type="text"] {
+    border: none;
+    background: none;
+    color: #444; /* Màu chữ */
+    padding: 8px;
+    margin-left: 10px;
+    width: 200px; /* Độ rộng của ô tìm kiếm */
+    outline: none; /* Loại bỏ viền bao quanh khi focus */
+}
+
+.search-box input[type="text"]::placeholder {
+    color: #888; /* Màu chữ mờ */
+}
+/* CSS cho các thuộc tính trang chủ, giới thiệu, ... */
+.home-feature,
+.introduction,
+.other-page {
+    padding: 20px;
+    border-radius: 10px; /* Bo tròn góc */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng viền */
+    background-color: #fff; /* Màu nền */
+    margin-bottom: 20px; /* Khoảng cách giữa các thành phần */
+}
+
+.home-feature h2,
+.introduction h2,
+.other-page h2 {
+    color: #333; /* Màu chữ cho tiêu đề */
+}
+
+.home-feature p,
+.introduction p,
+.other-page p {
+    color: #666; /* Màu chữ cho nội dung */
+}

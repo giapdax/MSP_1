@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Đảm bảo footer cố định ở cuối trang */
+}
+#wrapper {
+    flex: 1;
+}
+
+#wrapper {
+    /* Kích thước màn hình là 1280 x 720 */
+    width: 100%;
+    height: 100vh;
+}
+
+.item:hover {
+    transform: translateY(-5px); /* Di chuyển y lên trên khi hover */
+}
+#wrapper {
+    /* Kích thước màn hình là 1280 x 720 */
+    width: 100%;
+    height: 100vh;
+}
+.item {
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Tạo hiệu ứng chuyển động cho transform và opacity */
+}
+
+.item:hover {
+    transform: scale(1.1); /* Phóng to sản phẩm khi hover */
+    opacity: 0.9; /* Làm mờ sản phẩm khi hover */
+}
+
+body {
+    background-color: #dcdcdc; /* Màu hồng nhạt */
+    background-image: url("/images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.item img {
+    max-width: 70%;
+    height: auto;
+    border: 2px solid #ccc; /* Tạo viền màu xám (#ccc) với độ rộng là 2px */
+    border-radius: 10px; /* Làm tròn góc của viền */
+}
+
+
+.box-left img {
+    max-width: 60%;
+    height: 20px;
+    
+}
+#banner h1 {
+    margin-top: 80px; /* Nhích tiêu đề xuống 10px */
+}
+
+#banner {
+    margin-bottom: 10px;
+    text-align: center; /* Căn giữa nội dung trong phần tử #banner */
+}
+@keyframes fiery {
+    0% { color: #FF0000; text-shadow: 0 0 10px #FF5733, 0 0 20px #FF5733, 0 0 40px #FF5733, 0 0 60px #FFB833, 0 0 80px #FFB833, 0 0 100px #FFB833, 0 0 120px #FFB833; }
+    50% { color: #FFB833; text-shadow: none; }
+    100% { color: #FF0000; text-shadow: 0 0 10px #FF5733, 0 0 20px #FF5733, 0 0 40px #FF5733, 0 0 60px #FFB833, 0 0 80px #FFB833, 0 0 100px #FFB833, 0 0 120px #FFB833; }
+}
+#banner h1 span {
+    animation: fiery 3s infinite; /* Áp dụng hiệu ứng bốc cháy trong 3s và lặp vô hạn */
+    font-weight: bold; /* Đặt độ đậm của chữ */
+}
+
+
+.box-left {
+    display: flex;
+    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s; /* Thêm hiệu ứng chuyển động */
+}
+.image-container:hover img {
+    transform: scale(1.1); /* Phóng to hình ảnh khi rê chuột vào */
+}
+#wp-products {
+    margin-top: 0px;
+    padding-top:0px;
+    padding-bottom: 78px;
+    padding-left:134px;
+    padding-right:134px;
+}
+
+#wp-products h2 {
+    text-align: center;
+    margin-bottom: 76px;
+    font-size:32px;
+    color:#2a04a8;
+    margin-top: 13px;
+}
+
+
+#list-products {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#list-products .item {
+    width: 250px;
+    height: 270px;
+    background:#727569;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+#list-products .item img {
+    display: block;
+    margin: auto;
+    margin-top:17px;
+}
+
+#list-products .item .name {
+    text-align: center;
+    color:#f5f2f2;
+    font-weight: bold;
+    margin-top:10px;
+}
