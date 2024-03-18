@@ -3,11 +3,11 @@
     {
         return !filter_var($email,FILTER_VALIDATE_EMAIL);
     }
-    function isMatchPasswordAndConfirmPassword(string $password,string $confirmPassword) : bool
+    function isMatchPasswordAndConfirmPassword(string $password,string $confirmPassword) 
     {
         return ($password !== $confirmPassword);
     }
-    function isExistUsername(object $pdo, string $username) : bool
+    function isExistUsername(object $pdo, string $username)
     {
         return getUsername($pdo,$username);
     }
@@ -18,5 +18,5 @@
 
     function addUser(object $pdo,string $username,string $password,string $email) : void
     {
-        createUser($pdo,$username,$password,$email,2);
+        createUser($pdo,$username,$password,$email,1);
     }
