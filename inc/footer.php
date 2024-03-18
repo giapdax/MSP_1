@@ -12,16 +12,16 @@
             background-color:#beb1b1;
             color: #5a393d; /* Màu hồng đậm */
 ; /* Màu chữ */
-            position: absolute;
+            /* position: absolute;
             bottom: -200px;
             left: 0;
             width: 100%;
             padding: 10px;
-            transition: bottom 0.3s ease-in-out;
+            transition: bottom 0.3s ease-in-out; */
         }
-            body {
+            /* body {
                 margin-bottom: 70px;
-            }
+            } */
         
     </style>
     </head>

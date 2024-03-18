@@ -4,7 +4,7 @@
     {
         return (password_verify($password,$hashPassword));
     }
-    function isValidateUsername(bool|array $result) : bool|array
-    {
-        return $result;
+    function isValidateUsername($result) {
+        return is_bool($result) || is_array($result);
     }
+    

@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT']. '/config.php';
+    require_once  '../config.php';
     require_once('signup_view.php');
 ?>
 <!DOCTYPE html>

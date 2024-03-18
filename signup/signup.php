@@ -5,7 +5,7 @@
         $confirm_password = $_POST['confirm_password'];
         $email = $_POST['email'];
         try {
-            $pdo = require_once $_SERVER['DOCUMENT_ROOT']. '/database.inc';
+            $pdo = require_once  '../database.php';
             require_once 'signup_model.php';
             require_once 'signup_contr.php';
             $errors = [];
@@ -26,7 +26,7 @@
 //                    'Username must have least 8 characters,
 //                     does not contain space and special character';
 //            }
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+            require_once  '../config.php';
             if ($errors){
                 $_SESSION['errors_signup'] = $errors;
                 header("Location:signupform.php");

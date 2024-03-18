@@ -1,6 +1,6 @@
 <?php
-require_once('model/dbconfig.php');
-$db = new Database();
+require_once ('model/dbconfig.php');
+$db = new Database('localhost','test','root','tanphong1302');
 $db->connect();
 
 if(isset($_GET['controller'])){
@@ -11,7 +11,7 @@ if(isset($_GET['controller'])){
 
 switch($controller){
     case 'dbproducts':
-        require_once $_SERVER['DOCUMENT_ROOT'].'/controller/products/index.php';
+        require_once './controller/products/index.php';
         break;
 }   
     

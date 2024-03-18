@@ -2,6 +2,7 @@
 include 'header.php'; 
 require_once 'pagination.php'; // Import class Pagination
 
+
 // Lấy dữ liệu sản phẩm
 require_once('indexgiap.php');
 $tblTable = "products";
@@ -48,16 +49,20 @@ $pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả
                 $endIndex = min($startIndex + 10, count($data));
 
                 // Lặp qua dữ liệu sản phẩm chỉ hiển thị từ $startIndex đến $endIndex
-                for ($i = $startIndex; $i < $endIndex; $i++) {
-                    $value = $data[$i];
-                    echo '<li class="item">
-                            <a href="javascript:void(0);" onclick="redirectToInformation(\'' . $value['img'] . '\')">
-                                <img src="' . $value['img'] . '" alt="">
-                            </a>
-                            <div class="name">' . $value['name'] . '</div>
-                          </li>';
-                }
-                ?>
+                for ($i = $startIndex; $i < $endIndex; $i++) { 
+                    $value = $data[$i]; ?>
+                   <div class="item">
+                    <a href="javascript:void(0);"
+                        onclick="<?php echo isset($_SESSION['user_id']) ?
+                            "redirectToInformation('". $value['img'] . "')" : "redirectToLogin()"; ?>">
+                        <img src="<?php echo $value['img']; ?>" alt="">
+                    </a>
+                    <div class="name"><?php echo $value['name']; ?></div>
+
+                    </div>
+
+            <?php    } ?>
+                
             </ul>
         </div>
     </div>

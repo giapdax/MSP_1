@@ -1,5 +1,5 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT']. '/config.php';
+    require_once './config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách sản phẩm</title>
     <link rel="stylesheet" href="css/list.css"> <!-- Liên kết với file CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+            crossorigin="anonymous"></script>
 </head>
 <body>
     <style>
@@ -53,8 +58,8 @@ table img {
                     <!-- Sử dụng thẻ <img> để hiển thị hình ảnh -->
                     <td><img src="<?php echo $value['img']; ?>" alt=""></td>
                     <td class="action-buttons">
-                        <a onclick="return confirm('Bạn có muốn sửa không ?')" href="index.php?controller=dbproducts&action=edit&id=<?php echo $value['id']; ?>">Edit</a>
-                        <a onclick="return confirm('Bạn có muốn xóa không ?')" href="index.php?controller=dbproducts&action=delete&id=<?php echo $value['id']; ?>">Del</a>
+                        <a onclick="return confirm('Bạn có muốn sửa không ?')" href="indexgiap.php?controller=dbproducts&action=edit&id=<?php echo $value['id']; ?>">Edit</a>
+                        <a onclick="return confirm('Bạn có muốn xóa không ?')" href="indexgiap.php?controller=dbproducts&action=delete&id=<?php echo $value['id']; ?>">Del</a>
                     </td>
                 </tr>
                 <?php

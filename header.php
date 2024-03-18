@@ -47,7 +47,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
-                        <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                        <li><a class="dropdown-item" href="changepassword/change_password_form.php">Đổi mật khẩu</a></li>
                         <li><a class="dropdown-item" href="#">Menu item</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="logout.php">Thoát tài khoản</a></li>

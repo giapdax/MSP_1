@@ -17,7 +17,7 @@
             if (isValidateUsername($result) && !isValidatePassword($password,$result['pwd'])){
                 $errors['login_failed'] = "Incorrect_information";
             }
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+            require_once  '../config.php';
             if ($errors){
                 $_SESSION['errors_login'] = $errors;
                 header("Location:loginform.php");
