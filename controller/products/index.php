@@ -1,5 +1,5 @@
 <?php
-require_once 'header.php';
+require_once 'inc/header.php';
 // include "model/dbconfig.php";
 // Kiểm tra xem có tham số 'action' được truyền qua URL không
 if(isset($_GET['action'])){

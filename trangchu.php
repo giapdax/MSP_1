@@ -1,5 +1,5 @@
 <?php
-include 'header.php'; 
+include 'inc/header.php'; 
 require_once 'pagination.php'; // Import class Pagination
 
 

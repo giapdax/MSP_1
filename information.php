@@ -13,7 +13,7 @@
 </head>
 <body>
     <?php
-        require_once 'header.php';
+        require_once 'css/header.php';
     ?>
     <div class="product-detail-container">
         <?php
