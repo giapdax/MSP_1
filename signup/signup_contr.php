@@ -18,5 +18,5 @@
 
     function addUser(object $pdo,string $username,string $password,string $email) : void
     {
-        createUser($pdo,$username,$password,$email,1);
+        createUser($pdo,$username,$password,$email,2);
     }

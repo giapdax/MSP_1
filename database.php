@@ -1,7 +1,7 @@
 <?php
-    $dsn = "mysql:host=localhost;dbname=test";
+    $dsn = "mysql:host=localhost;dbname=msp";
     $db_username = "root";
-    $db_password = "tanphong1302";
+    $db_password = "mysql";
         try {
     $pdo = new PDO($dsn,$db_username,$db_password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

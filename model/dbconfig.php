@@ -2,8 +2,8 @@
 class Database{
     private $hostname = 'localhost';
     private $username = 'root';
-    private $pass = 'tanphong1302';
-    private $dbname ='test';
+    private $pass = 'mysql';
+    private $dbname ='msp';
 
     private $conn = NULL;
     private $result = NULL;

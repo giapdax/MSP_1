@@ -14,7 +14,7 @@
             if(!isValidateUsername($result)){
                 $errors['login_failed'] = "Incorrect_information";
             }
-            if (isValidateUsername($result) && !isValidatePassword($password,$result['pwd'])){
+            if (isValidateUsername($result) && !isValidatePassword($password,$result['password'])){
                 $errors['login_failed'] = "Incorrect_information";
             }
             require_once  '../config.php';

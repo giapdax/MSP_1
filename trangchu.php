@@ -5,11 +5,12 @@ require_once 'pagination.php'; // Import class Pagination
 
 // Lấy dữ liệu sản phẩm
 require_once('indexgiap.php');
+$a=1;
 $tblTable = "products";
 $data = $db->getAllData($tblTable);
 
 // Khởi tạo class Pagination với dữ liệu và cấu hình
-$pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả sử mỗi trang có 5 sản phẩm
+$pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả sử mỗi trang có 5 sản phẩm
 
 ?>
 <!DOCTYPE html>
@@ -44,9 +45,9 @@ $pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả
                 // Lấy trang hiện tại từ class Pagination
                 $currentPage = $pagination->getCurrentPage();
                 // Tính chỉ số bắt đầu của sản phẩm trong trang hiện tại
-                $startIndex = ($currentPage - 1) * 10;
+                $startIndex = ($currentPage - 1) * $a;
                 // Tính chỉ số kết thúc của sản phẩm trong trang hiện tại
-                $endIndex = min($startIndex + 10, count($data));
+                $endIndex = min($startIndex + $a, count($data));
 
                 // Lặp qua dữ liệu sản phẩm chỉ hiển thị từ $startIndex đến $endIndex
                 for ($i = $startIndex; $i < $endIndex; $i++) { 

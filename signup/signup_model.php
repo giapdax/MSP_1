@@ -34,7 +34,7 @@
 
     function createUser(object $pdo,string $username,string $password,string $email,int $role_id) : void
     {
-        $sql = "INSERT INTO users(username,pwd,email,role_id) 
+        $sql = "INSERT INTO users(username,password,email,role_id) 
                     VALUES (:username,:password,:email,:role_id);";
         $stmt = $pdo->prepare($sql);
         $hash_password = password_hash($password,PASSWORD_DEFAULT);
