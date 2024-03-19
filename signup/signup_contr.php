@@ -7,7 +7,7 @@
     {
         return ($password !== $confirmPassword);
     }
-    function isExistUsername(object $pdo, string $username) 
+    function isExistsUsername(object $pdo, string $username) 
     {
         return getUsername($pdo,$username);
     }
