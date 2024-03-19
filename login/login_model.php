@@ -6,6 +6,5 @@
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(":username",$username, PDO::PARAM_STR);
         $stmt->execute();
-
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

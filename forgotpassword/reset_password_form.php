@@ -15,6 +15,7 @@
     <?php
         $token = $_GET['token'];
         if(empty($token)){
+            ///
             echo "Error";
         }else { ?>
     <form action="reset_password.php" method="post">
