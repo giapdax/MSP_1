@@ -1,0 +1,2 @@
+RewriteEngine On
+    ErrorDocument 404 http://localhost/MSP_GIAP/404.php
