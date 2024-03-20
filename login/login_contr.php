@@ -1,6 +1,6 @@
 <?php
     declare(strict_types=1);
-    function isValidatePassword(string $password,string $hashPassword) : bool
+    function isValidatePassword(string $password,string $hashPassword)
     {
         return (password_verify($password,$hashPassword));
     }

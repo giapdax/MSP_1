@@ -10,11 +10,11 @@
             //Exception
             $errors = [];
             $result = getUserByUsername($pdo,$username);
-
+            $user_password = (string) $result['password'];
             if(!isValidateUsername($result)){
                 $errors['login_failed'] = "Incorrect_information";
             }
-            if (isValidateUsername($result) && !isValidatePassword($password,$result['password'])){
+            if (isValidateUsername($result) && !isValidatePassword($password,$user_password)){
                 $errors['login_failed'] = "Incorrect_information";
             }
             require_once  '../config.php';
