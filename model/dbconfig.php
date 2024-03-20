@@ -1,5 +1,5 @@
 <?php
-class product{
+class Database{
     private $hostname = 'localhost';
     private $username = 'root';
     private $pass = 'mysql';

@@ -1,6 +1,6 @@
 <?php
 require_once ('model/dbconfig.php');
-$db = new Database('localhost','test','root','tanphong1302');
+$db = new Database('localhost','msp','root','mysql');
 $db->connect();
 
 if(isset($_GET['controller'])){
@@ -14,6 +14,4 @@ switch($controller){
         require_once './controller/products/index.php';
         break;
 }   
-    
-
 ?>
