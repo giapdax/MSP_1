@@ -13,12 +13,11 @@
 </head>
 <body>
     <?php
-        $token = $_GET['token'];
-        if(empty($token)){
-            echo "Error";
+        if(!isset($_GET['token'])){
+            require '../404.php';
         }else { ?>
     <form action="reset_password.php" method="post">
-        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <input type="hidden" name="token" value="<?php echo $_GET['token'] ?>">
         <div class="login-box">
             <div class="login-header">
                 <header>Reset password</header>
@@ -37,6 +36,7 @@
             <div class="input-submit">
                 <button class="submit-btn" id="submit" name="reset-password"></button>
                 <label for="submit">Reset password</label>
+                <a href="../trangchu.php" class="btn">Quay lại trang chủ</a>
             </div>
     </form>
     <?php } ?>

@@ -1,12 +1,14 @@
 <?php
 require_once './config.php';
+require_once 'model/users.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách sản phẩm</title>
+    <title>Danh Sách User</title>
     <link rel="stylesheet" href="css/list.css"> <!-- Liên kết với file CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
@@ -23,39 +25,31 @@ require_once './config.php';
 </head>
 <body>
 <div class="danhsach">
-    <h3> DANH SÁCH SẢN PHẨM</h3>
+    <h3> DANH SÁCH NGƯỜI DÙNG</h3>
     <table class="table">
         <thead>
         <tr>
             <th>STT</th>
-            <th>Tên</th>
-            <th>Giá</th>
-            <th>Kích cỡ</th>
-            <th>Information</th>
-            <th>Ảnh</th>
-            <th>Hành Động</th>
+            <th>Tên Người Dùng</th>
+            <th>Email</th>
+            <th>Ngày Tạo</th>
+            <th>Hành động</th>
         </tr>
         </thead>
         <tbody>
         <?php
-
         $stt = 1;
-        $tblTable= "products";
-        $data = $db->getAllData($tblTable);
-        foreach ($data as $value) {
+        $tblTableuser = "users";
+        $datauser = $user->getAllDataUser($tblTableuser);
+        foreach ($datauser as $value) {
             ?>
             <tr>
                 <td><?php echo $stt; ?></td>
-                <td><?php echo $value['name']; ?></td>
-                <td><?php echo $value['price']; ?></td>
-                <td><?php echo $value['size']; ?></td>
-                <td><?php echo $value['information']; ?></td>
-
-                <!-- Sử dụng thẻ <img> để hiển thị hình ảnh -->
-                <td><img src="<?php echo $value['img']; ?>" alt="Product Image"></td>
+                <td><?php echo $value['username']; ?></td>
+                <td><?php echo $value['email']; ?></td>
+                <td><?php echo $value['date_created']; ?></td>
                 <td class="action-buttons">
-                    <a onclick="return confirm('Bạn có muốn sửa không ?')" href="indexgiap.php?controller=dbproducts&action=edit&id=<?php echo $value['id']; ?>">Edit</a>
-                    <a onclick="return confirm('Bạn có muốn xóa không ?')" href="indexgiap.php?controller=dbproducts&action=delete&id=<?php echo $value['id']; ?>">Del</a>
+                    <a onclick="return confirm('Bạn có muốn xóa không ?')" href="indexgiap.php?controller=dbusers&action=deleteuser&id=<?php echo $value['id']; ?>">Del</a>
                 </td>
             </tr>
             <?php

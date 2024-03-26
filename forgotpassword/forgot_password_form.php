@@ -26,6 +26,7 @@
         <div class="input-submit">
             <button class="submit-btn" id="submit" name="send"></button>
             <label for="submit">Continue</label>
+            <a href="../trangchu.php" class="btn">Quay lại trang chủ</a>
         </div>
 
 </form>

@@ -4,7 +4,7 @@ require_once 'pagination.php'; // Import class Pagination
 
 // Lấy dữ liệu sản phẩm
 require_once('indexgiap.php');
-$a = 1; // quy định số sản phẩm của mỗi trang 
+$a = 5; // quy định số sản phẩm của mỗi trang 
 $tblTable = "products";
 $data = $db->getAllData($tblTable);
 
@@ -50,11 +50,9 @@ $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả
             for ($i = $startIndex; $i < $endIndex; $i++) {
                 $value = $data[$i]; ?>
                 <div class="item">
-                    <a href="javascript:void(0);"
-                       onclick="<?php echo isset($_SESSION['user_id']) ?
-                           "redirectToInformation('". $value['img'] . "')" : "redirectToLogin()"; ?>">
+                <a href="javascript:void(0);" onclick="redirectToInformation('<?php echo $value['img']; ?>')">
                         <img src="<?php echo $value['img']; ?>" alt="">
-                    </a>
+                </a>
                     <div class="name"><?php echo $value['name']; ?></div>
                 </div>
             <?php } ?>
@@ -78,26 +76,6 @@ $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả
     echo $pagination->getPagination();
     ?>
 </div>
-
-<?php
-if(isset($_SESSION['user_id'])){
-    // Nếu user đã đăng nhập, thực hiện chuyển hướng
-    echo "<script>
-                function redirectToInformation(imageSrc) {
-                    // Chuyển hướng người dùng đến trang information.php và truyền đường dẫn ảnh
-                    window.location.href = 'information.php?img=' + encodeURIComponent(imageSrc);
-                }
-            </script>";
-} else {
-    // Nếu user chưa đăng nhập, chuyển hướng đến trang đăng nhập
-    echo "<script>
-                    function redirectToLogin() {
-                        window.location.href = 'login/loginform.php ';
-                    }
-                </script>";
-
-}
-?>
 </body>
 </html>
 

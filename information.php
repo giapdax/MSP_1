@@ -34,9 +34,7 @@
             <h2 class="product-title">PRODUCT DETAILS</h2>
             <div class="product-item">
                 <div class="product-name"><?php echo $value['name']; ?></div>
-                <div class="product-description"><?php echo $value['category']; ?></div>
                 <div class="product-description"><?php echo "Size: " . $value['size']; ?></div>
-                <div class="product-description"><?php echo "Quantity: " . $value['quantity']; ?></div>
                 <div class="product-price"><?php echo "Price: " . $value['price']; ?></div>
             </div>
             <div class="product-information"><?php echo $value['information']; ?></div>

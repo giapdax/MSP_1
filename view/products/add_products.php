@@ -11,22 +11,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
             integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
             crossorigin="anonymous"></script>
+            
 <body>
+
     <div class="container">
         <div class="dangkysanpham">
             <a href="indexgiap.php?controller=dbproducts&action=list"></a>
             
-            <h3>Add Products</h3>
+            <h3>Thêm Sản Phẩm</h3>
 
             <form action="indexgiap.php?controller=dbproducts&action=add" method="POST" enctype="multipart/form-data">
                 <table>
                     <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input type="text" id="name" name="name" placeholder="Enter name product"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="category">Category:</label></td>
-                        <td><input type="text" id="category" name="category" placeholder="Enter category"></td>
                     </tr>
                     <tr>
                         <td><label for="price">Price:</label></td>
@@ -36,10 +34,6 @@
                         <td><label for="size">Size:</label></td>
                         <td><input type="text" id="size" name="size" placeholder="Enter size"></td>
                         
-                    </tr>
-                    <tr>
-                        <td><label for="quantity">Quantity:</label></td>
-                        <td><input type="text" id="quantity" name="quantity" placeholder="Enter quantity"></td>
                     </tr>
                     <tr>
                         <td><label for="information">Information:</label></td>
@@ -79,7 +73,5 @@ if(isset($_SESSION['add_success'])) {
 //    require 'inc/footer.php';
 //    ?>
 </body>
-    <?php
-    require 'inc/footer.php';
-    ?>
 </html>
+

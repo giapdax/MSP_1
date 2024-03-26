@@ -36,6 +36,7 @@
             ){ ?>
             <a href="indexgiap.php?controller=dbproducts&&action=list">Sản Phẩm</a>
             <a href="indexgiap.php?controller=dbproducts&&action=add">Thêm Sản Phẩm</a>
+            <a href="indexgiap.php?controller=dbusers&&action=listuser">Danh Sách Người Dùng</a>
         <?php } ?>
 <!--        Role user-->
         <?php
@@ -46,8 +47,8 @@
                         <span style="color:#5a393d; font-weight: bold">Tài khoản</span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
                         <li><a class="dropdown-item" href="changepassword/change_password_form.php">Đổi mật khẩu</a></li>
+                        <li><a class="dropdown-item" href="indexgiap.php?controller=dbusers&action=edituser&id=<?php echo $_SESSION['user_id']; ?>">Đổi thông tin</a></li>
                         <li><a class="dropdown-item" href="#">Menu item</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="logout.php">Thoát tài khoản</a></li>

@@ -13,15 +13,13 @@ switch($action){
     case 'add': {
         if(isset($_POST['add_products'])) {
             $name = $_POST['name'];
-            $category = $_POST['category'];
             $price = $_POST['price'];
             $size = $_POST['size'];
-            $quantity = $_POST['quantity'];
             $information = $_POST['information'];
 
             require_once 'uploads.php';
             // Thêm sản phẩm vào cơ sở dữ liệu
-            if($db->InsertData($name, $category, $hinhanhpath, $price, $size, $quantity,$information )) {
+            if($db->InsertData($name,'1', $hinhanhpath, $price, $size,$information )) {
                 $thanhcong[] = 'add_success';
             } else {
                 echo "Sorry, there was an error adding your product."; // Thông báo lỗi khi thêm sản phẩm không thành công
@@ -39,10 +37,8 @@ switch($action){
             $dataID = $db->getDataID($tblTable, $id);
                 if (isset($_POST['update_products'])) {
                     $name = $_POST['name'];
-                    $category = $_POST['category'];
                     $price = $_POST['price'];
                     $size = $_POST['size'];
-                    $quantity = $_POST['quantity'];
                     $information = $_POST['information'];
                     
                     // Kiểm tra xem người dùng đã tải lên tệp mới hay không
@@ -61,7 +57,7 @@ switch($action){
                     }
                     
                     // Tiến hành cập nhật dữ liệu vào cơ sở dữ liệu
-                    $db->UpdateData($id, $name, $category, $hinhanhpath, $price, $size, $quantity, $information);
+                    $db->UpdateData($id, $name,1, $hinhanhpath, $price, $size, $information);
                     $thanhcong[] = 'add_success';
                 }
                 

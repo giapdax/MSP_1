@@ -45,9 +45,10 @@
             </div>
             <div class="sign-up-link">
                 <p>Don't have account? <a href="../signup/signupform.php">Sign Up</a></p>
+                <a href="../trangchu.php" class="btn">Quay lại trang chủ</a>
             </div>
         </div>
-
     </form>
 </body>
+
 </html>

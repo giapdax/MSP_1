@@ -14,7 +14,7 @@
             $result = getUserByUserID($pdo,$userID);
             $errors = [];
 
-            if(!isValidatePassword($oldPassword,$result['pwd'])){
+            if(!isValidatePassword($oldPassword,$result['password'])){
                 $errors['OldPassword_not_correct'] = 'OldPassword not correct';
             }
             if($newPassword !== $confirmPassword){
