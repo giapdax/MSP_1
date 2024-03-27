@@ -19,12 +19,12 @@
                 <table class="table">
                     <tr>
                         <td><label for="username">username:</label></td>
-                        <td><input type="text" id="username" name="username" value="<?php echo $dataIDuser['username']?>" placeholder="Enter username"></td>
+                        <td><input type="text" id="username" name="username" value="<?php echo isset($username) ? $username : $dataIDuser['username']; ?>" placeholder="Enter username"></td>
                     </tr>
 
                     <tr>
                         <td><label for="email">email:</label></td>
-                        <td><input type="text" id="email" name="email" value="<?php echo $dataIDuser['email']?>" placeholder="Enter email"></td>
+                        <td><input type="text" id="email" name="email" value="<?php echo isset($email) ? $email : $dataIDuser['email']; ?>" placeholder="Enter email"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: center;"><input type="submit" name="update_user" value="Cập Nhật" class="btn btn-primary"></td>
@@ -40,10 +40,10 @@ if(isset($thanhcong) && in_array('add_success', $thanhcong)) {
 }
 
 if(isset($_SESSION['add_success'])) {
-    echo "<p style='color: green; text-align: center'>UPDATE SUCCESS.</p>";
+    echo "<p style='color: green; text-align: center'>THAY ĐỔI THÀNH CÔNG</p>";
     unset($_SESSION['add_success']); // Xóa biến session sau khi hiển thị thông báo
 } elseif(isset($_SESSION['add_fail'])) {
-    echo "<p style='color: red; text-align: center'>UPDATE FAIL.</p>";
+    echo "<p style='color: red; text-align: center'>THAY ĐỔI THẤT BẠI</p>";
     unset($_SESSION['add_fail']); // Xóa biến session sau khi hiển thị thông báo
 } else {
     // Không có thông báo

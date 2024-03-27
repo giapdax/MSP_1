@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css">
-    <title>Sign Up |</title>
+    <title>Reset Password|</title>
 </head>
 <body>
     <?php
@@ -26,7 +26,7 @@
                 ?>
             </div>
             <div class="input-box">
-                <input type="text" name="new_password"
+                <input type="password" name="new_password"
                        class="input-field" placeholder="Your new password..." autocomplete="off" required>
             </div>
             <div class="input-box">
@@ -36,9 +36,10 @@
             <div class="input-submit">
                 <button class="submit-btn" id="submit" name="reset-password"></button>
                 <label for="submit">Reset password</label>
-                <a href="../trangchu.php" class="btn">Quay lại trang chủ</a>
             </div>
-    </form>
+            <a href="../login/loginform.php" class="btn">Log In</a>
+            <a href="../trangchu.php" class="btn">Quay lại trang chủ</a>
+    </form> 
     <?php } ?>
 
 

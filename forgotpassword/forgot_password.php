@@ -2,7 +2,7 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $token = bin2hex(random_bytes(16));
         $expired = date('U') + 300; // thời hạn token có giá trị
-        $url = "Hi there, click on this <a href=http://localhost/MSP_GIAP/forgotpassword/reset_password_form.php?token=". $token
+        $url = "Hi there, click on this <a href=http://localhost/MSP/forgotpassword/reset_password_form.php?token=". $token
             .">Link</a> to resest your password for application" ;
         $userEmail = $_POST['email'];
         try {

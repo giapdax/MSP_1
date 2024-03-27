@@ -17,19 +17,19 @@
                 <table class="table">
                     <tr>
                         <td><label for="name">Name:</label></td>
-                        <td><input type="text" id="name" name="name" value="<?php echo $dataID['name']?>" placeholder="Enter product name"></td>
+                        <td><input type="text" id="name" name="name" value="<?php echo isset($name) ? $name : $dataID['name']; ?>" placeholder="Enter product name"></td>
                     </tr>
                     <tr>
                         <td><label for="price">Price:</label></td>
-                        <td><input type="text" id="price" name="price" value="<?php echo $dataID['price']?>" placeholder="Enter price"></td>
+                        <td><input type="text" id="price" name="price" value="<?php echo isset($price) ? $price : $dataID['price']; ?>" placeholder="Enter price"></td>
                     </tr>
                     <tr>
                         <td><label for="size">Size:</label></td>
-                        <td><input type="text" id="size" name="size" value="<?php echo $dataID['size']?>" placeholder="Enter size"></td>
+                        <td><input type="text" id="size" name="size" value="<?php echo isset($size) ? $size : $dataID['size']; ?>" placeholder="Enter size"></td>
                     </tr>
                     <tr>
                         <td><label for="information">Information:</label></td>
-                        <td><input type="text" id="information" name="information" value="<?php echo $dataID['information']?>" placeholder="Enter information"></td>
+                        <td><input type="text" id="information" name="information" value="<?php echo isset($information) ? $information : $dataID['information']; ?>" placeholder="Enter information"></td>
                     </tr>
                     <tr>
                         <td><label for="img">Image:</label></td>
@@ -44,27 +44,26 @@
                 </table>
             </form>
             <?php
+            if(isset($thanhcong) && in_array('add_success', $thanhcong)) {
+                $_SESSION['add_success'] = true;
+            } elseif (isset($thanhcong) && in_array('add_fail', $thanhcong)) {
+                $_SESSION['add_fail'] = true;
+            }
 
-if(isset($thanhcong) && in_array('add_success', $thanhcong)) {
-    $_SESSION['add_success'] = true;
-} elseif (isset($thanhcong) && in_array('add_fail', $thanhcong)) {
-    $_SESSION['add_fail'] = true;
-}
-
-if(isset($_SESSION['add_success'])) {
-    echo "<p style='color: green; text-align: center'>UPDATE SUCCESS.</p>";
-    unset($_SESSION['add_success']); // Xóa biến session sau khi hiển thị thông báo
-} elseif(isset($_SESSION['add_fail'])) {
-    echo "<p style='color: red; text-align: center'>UPDATE FAIL.</p>";
-    unset($_SESSION['add_fail']); // Xóa biến session sau khi hiển thị thông báo
-} else {
-    // Không có thông báo
-}
-?>
+            if(isset($_SESSION['add_success'])) {
+                echo "<p style='color: green; text-align: center'>THAY ĐỔI THÀNH CÔNG</p>";
+                unset($_SESSION['add_success']); // Xóa biến session sau khi hiển thị thông báo
+            } elseif(isset($_SESSION['add_fail'])) {
+                echo "<p style='color: red; text-align: center'>THAY ĐỔI THẤT BẠI</p>";
+                unset($_SESSION['add_fail']); // Xóa biến session sau khi hiển thị thông báo
+            } else {
+                // Không có thông báo
+            }
+            ?>
         </div>
     </div>
 </body>
 <?php
     require 'inc/footer.php';
-    ?>
+?>
 </html>

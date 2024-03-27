@@ -20,6 +20,9 @@
             if($newPassword !== $confirmPassword){
                 $errors['Password_does_not_match'] = 'Confirm password does not match';
             }
+            if (strpos($newPassword, ' ') !== false) {
+                $errors['invalid_password'] = 'Password must not contain spaces';
+            }
             if($errors){
                 $_SESSION['change_password_error'] = $errors;
                 header("Location:change_password_form.php");

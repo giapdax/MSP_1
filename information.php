@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail</title>
+    <title>Thông Tin Chi Tiết</title>
     <link rel="stylesheet" href="css/information.css"> <!-- Link to CSS file -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -31,7 +31,7 @@
             <img src="<?php echo $value['img']; ?>" alt="Product Image" class="product-image">
         </div>
         <div class="product-info-container">
-            <h2 class="product-title">PRODUCT DETAILS</h2>
+            <h2 class="product-title">THÔNG TIN CHI TIẾT</h2>
             <div class="product-item">
                 <div class="product-name"><?php echo $value['name']; ?></div>
                 <div class="product-description"><?php echo "Size: " . $value['size']; ?></div>

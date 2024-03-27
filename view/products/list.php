@@ -31,7 +31,7 @@ require_once './config.php';
             <th>Tên</th>
             <th>Giá</th>
             <th>Kích cỡ</th>
-            <th>Information</th>
+            <th>Thông Tin</th>
             <th>Ảnh</th>
             <th>Hành Động</th>
         </tr>

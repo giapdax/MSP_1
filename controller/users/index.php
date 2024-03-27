@@ -14,7 +14,6 @@ switch($action){
             $id = $_GET['id'];
             $tblTableuser = "users";
             $dataIDuser = $user->getDataIDUser($tblTableuser, $id);
-            
             // Kiểm tra xem người dùng đã gửi dữ liệu từ mẫu sửa đổi hay chưa
             if (isset($_POST['update_user'])) {
                 $username = $_POST['username'];
