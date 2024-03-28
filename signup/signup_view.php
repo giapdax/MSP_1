@@ -9,10 +9,10 @@
             foreach ($errors as $error){
                 echo '<p class="form-error">' .$error . '</p>';
             }
-
+            
             unset($_SESSION['errors_signup']);
         }else if (isset($_GET['signup']) && $_GET['signup'] === "success"){
             echo '</br>';
-            echo '<p class="form-success">Sign-up success </p>';
+            echo '<p class="form-success">Sign-up success, Please check your-email to activate account </p>';
         }
     }
