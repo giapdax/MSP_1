@@ -18,6 +18,9 @@
             if(empty($password) || empty($confirmPassword)){
                 $errors['empty'] = 'Do not blank';
             }
+            if (strpos($password, ' ') !== false) {
+                $errors['invalid_password'] = 'Password must not contain spaces';
+            }
             if(!isExistToken($pdo,$token,$expired)){
                 $errors['resend_email'] = 'Could not reset password. Please resend email';
             }

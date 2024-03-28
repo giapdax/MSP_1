@@ -17,6 +17,9 @@
             if (isMatchPasswordAndConfirmPassword($password,$confirm_password)){
                 $errors['confirm_password'] = "Password do not match";
             }
+            if (strpos($password, ' ') !== false) {
+                $errors['invalid_password'] = 'Password must not contain spaces';
+            }
             if (isExistsUsername($pdo,$username)){
                 $errors['username_exist'] = "Username already exist";
             }
@@ -25,6 +28,9 @@
             }
             if (isEmailValid($email) || !preg_match('/^\\S+@\\S+\\.\\S+$/',$email)){
                 $errors['invalid_email'] = "Invalid email";
+            }
+            if (!preg_match('/^[a-zA-Z0-9]+$/', $username)) {
+                $errors['invalid_username'] = 'Username must only contain letters and numbers';
             }
 //            if(!preg_match('^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$', $username)){
 //                $errors['invalid_username'] =

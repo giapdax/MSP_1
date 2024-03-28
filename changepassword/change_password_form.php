@@ -1,6 +1,8 @@
 <?php
+  
     require_once "../config.php";
     require_once 'change_password_view.php';
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

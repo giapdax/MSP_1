@@ -14,11 +14,14 @@
             $result = getUserByUserID($pdo,$userID);
             $errors = [];
 
-            if(!isValidatePassword($oldPassword,$result['pwd'])){
+            if(!isValidatePassword($oldPassword,$result['password'])){
                 $errors['OldPassword_not_correct'] = 'OldPassword not correct';
             }
             if($newPassword !== $confirmPassword){
                 $errors['Password_does_not_match'] = 'Confirm password does not match';
+            }
+            if (strpos($password, ' ') !== false) {
+                $errors['invalid_password'] = 'Password must not contain spaces';
             }
             if($errors){
                 $_SESSION['change_password_error'] = $errors;

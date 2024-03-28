@@ -1,16 +1,37 @@
 <?php
-include 'header.php'; 
+include 'inc/header.php'; 
 require_once 'pagination.php'; // Import class Pagination
-
 
 // Lấy dữ liệu sản phẩm
 require_once('indexgiap.php');
+$a = 5; // Số sản phẩm mỗi trang 
 $tblTable = "products";
-$data = $db->getAllData($tblTable);
+
+// Khởi tạo biến để kiểm tra tìm kiếm
+$searchNotFound = false;
+
+// Xử lý tìm kiếm
+$key = isset($_GET['tukhoa']) ? $_GET['tukhoa'] : ''; // Lấy từ khóa tìm kiếm từ URL
+if (!empty($key)) {
+    $data = $db->SearchData($tblTable, $key); // Tìm kiếm nếu có từ khóa
+    // Kiểm tra xem dữ liệu từ tìm kiếm có tồn tại không
+    if (empty($data)) {
+        $searchNotFound = true; // Đặt biến kiểm tra tìm kiếm không thành công
+        $data = $db->getAllData($tblTable); // Lấy tất cả dữ liệu nếu không có từ khóa
+    }
+} else {
+    $data = $db->getAllData($tblTable); // Lấy tất cả dữ liệu nếu không có từ khóa
+}
 
 // Khởi tạo class Pagination với dữ liệu và cấu hình
-$pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả sử mỗi trang có 5 sản phẩm
+$pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả sử mỗi trang có 5 sản phẩm
 
+// Lấy chỉ số bắt đầu và kết thúc của dữ liệu trang hiện tại
+$startIndex = ($pagination->getCurrentPage() - 1) * $a;
+$endIndex = min($startIndex + $a, count($data));
+
+// Chỉ lấy dữ liệu của trang hiện tại từ $startIndex đến $endIndex
+$dataPage = array_slice($data, $startIndex, $a);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,90 +39,72 @@ $pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/pagination.css"> <!-- Liên kết với file CSS cho trang chủ -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <title>Danh sách sản phẩm</title>
     <link rel="stylesheet" href="css/trangchu.css"> <!-- Liên kết với file CSS -->
 </head>
 <body>
-    
-    <div id="wrapper">
-        <div id="banner">
-            <div class="box-left">
-                <h1>
-                    <span>GIÀY ĐÁ BÓNG CHÍNH HÃNG</span>
-                </h1>
-            </div>
+<div class="timkiem">
+    <form action="" method="GET">
+        <table>
+        <tr>
+            <input type="hidden" name="controller" value="dbproducts">
+            <td><input type="text" name="tukhoa" placeholder="Nhập từ khóa"></td>
+            <td><input type="submit" value="Tìm kiếm"></td>
+        </tr>
+        </table>
+        <input type="hidden" name="action" value="tim-kiem">
+        <?php if ($searchNotFound): ?>
+        <p>Không tìm thấy kết quả cho từ khóa "<?php echo $key; ?>"</p>
+    <?php endif; ?>
+    </form>
+</div>  
+<div id="wrapper">
+    <div id="banner">
+        <div class="box-left">
+            <h1>
+                <span>GIÀY ĐÁ BÓNG CHÍNH HÃNG</span>
+            </h1>
         </div>
-        <div id="wp-products">
-            <h2>SẢN PHẨM CỦA CHÚNG TÔI</h2>
-            <ul id="list-products">
+    </div>
+    <div id="wp-products">
+        <h2>SẢN PHẨM CỦA CHÚNG TÔI</h2>
+        <ul id="list-products">
             <?php
-                require_once 'pagination.php'; // Import class Pagination
-                // Lấy trang hiện tại từ class Pagination
-                $currentPage = $pagination->getCurrentPage();
-                // Tính chỉ số bắt đầu của sản phẩm trong trang hiện tại
-                $startIndex = ($currentPage - 1) * 10;
-                // Tính chỉ số kết thúc của sản phẩm trong trang hiện tại
-                $endIndex = min($startIndex + 10, count($data));
-
-                // Lặp qua dữ liệu sản phẩm chỉ hiển thị từ $startIndex đến $endIndex
-                for ($i = $startIndex; $i < $endIndex; $i++) { 
-                    $value = $data[$i]; ?>
-                   <div class="item">
-                    <a href="javascript:void(0);"
-                        onclick="
-                            redirectToInformation('<?php $value['img']; ?>')">
+            // Lặp qua dữ liệu sản phẩm để hiển thị
+            foreach ($dataPage as $value) {
+            ?>
+                <div class="item">
+                    <a href="javascript:void(0);" onclick="redirectToInformation('<?php echo $value['img']; ?>')">
                         <img src="<?php echo $value['img']; ?>" alt="">
                     </a>
                     <div class="name"><?php echo $value['name']; ?></div>
-
-                    </div>
-
-            <?php    } ?>
-                
-            </ul>
-        </div>
+                </div>
+            <?php
+            }
+            ?>
+        </ul>
     </div>
-    <input type="hidden" id="productImage" name="productImage" value=""> <!-- Input hidden để lưu đường dẫn ảnh -->
-    <script>
-        function redirectToInformation(imageSrc) {
-            // Chuyển hướng người dùng đến trang information.php và truyền đường dẫn ảnh
-            window.location.href = 'information.php?img=' + encodeURIComponent(imageSrc);
-        }
-    </script>
-    <div class="pagination-container">
-        <?php
-        // Hiển thị phân trang
-        require_once 'pagination.php'; // Import class Pagination
-        echo $pagination->getPagination();
-        ?>
-    </div>
-    
-    <?php
-    if(isset($_SESSION['user_id'])){
-        // Nếu user đã đăng nhập, thực hiện chuyển hướng
-        echo "<script>
-                    function redirectToInformation(imageSrc) {
-                        // Chuyển hướng người dùng đến trang information.php và truyền đường dẫn ảnh
-                        window.location.href = 'information.php?img=' + encodeURIComponent(imageSrc);
-                    }
-                </script>";
-    } else {
-        // Nếu user chưa đăng nhập, chuyển hướng đến trang đăng nhập
-        echo "<script>
-                        function redirectToLogin() {
-                            window.location.href = 'login/loginform.php ';
-                        }
-                    </script>";
+</div>
 
+<input type="hidden" id="productImage" name="productImage" value=""> <!-- Input hidden để lưu đường dẫn ảnh -->
+
+<script>
+    function redirectToInformation(imageSrc) {
+        // Chuyển hướng người dùng đến trang information.php và truyền đường dẫn ảnh
+        window.location.href = 'information.php?img=' + encodeURIComponent(imageSrc);
     }
+</script>
+
+<div class="pagination-container">
+    <?php
+    // Hiển thị phân trang
+    echo $pagination->getPagination();
     ?>
+</div>
 </body>
 </html>
+
 <?php include "inc/footer.php"; ?>
-
-

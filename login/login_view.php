@@ -13,5 +13,6 @@ declare(strict_types=1);
         }else if (isset($_GET['login']) && $_GET['login'] === 'success'){
             echo '</br>';
             echo '<p class="form-success">Login successfully </p>';
+            
         }
     }

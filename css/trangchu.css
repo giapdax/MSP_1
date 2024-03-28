@@ -130,3 +130,38 @@ body {
     font-weight: bold;
     margin-top:10px;
 }
+/* CSS cho ô tìm kiếm */
+.timkiem {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timkiem table {
+    margin: auto;
+}
+
+.timkiem input[type="text"], .timkiem input[type="submit"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.timkiem input[type="text"] {
+    width: 300px;
+}
+
+.timkiem input[type="submit"] {
+    background-color: #5b3012;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.timkiem input[type="submit"]:hover {
+    background-color: #3e301be1;
+}

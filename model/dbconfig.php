@@ -7,7 +7,6 @@ class Database{
 
     private $conn = NULL;
     private $result = NULL;
-
     
     public function connect(){
         $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
@@ -72,21 +71,38 @@ class Database{
         return $num;
 
     }
-    public function InsertData($name, $category, $img, $price, $size, $quantity,$information) {
-        $sql = "INSERT INTO products(name, category, img, price, size, quantity, information) 
-                VALUES ('$name', '$category', '$img', '$price', '$size', '$quantity','$information')";
+    public function InsertData($name, $category_id, $img, $price, $size,$information) {
+        $sql = "INSERT INTO products(name, category_id, img, price, size, information) 
+                VALUES ('$name', '$category_id', '$img', '$price', '$size','$information')";
         return $this->execute($sql);
     }
     
 
-    public function UpdateData($id, $name, $category, $img, $price, $size, $quantity, $information){
-        $sql = "UPDATE products SET name='$name', category='$category', img='$img', price='$price', quantity='$quantity', information= '$information' WHERE id='$id'";
+    public function UpdateData($id, $name, $category_id, $img, $price, $size, $information){
+        $sql = "UPDATE products SET name='$name', category_id='$category_id', img='$img', price='$price', size='$size', information= '$information' WHERE id='$id'";
         return $this->execute($sql);
     }
-
     public function Delete($id, $table){
         $sql = "DELETE FROM $table WHERE id='$id'";
         return $this->execute($sql);
     }
+    // phương thức tìm kiếm dữ liệu 
+    public function SearchData($table, $key){
+        $sql = "SELECT * FROM $table WHERE name LIKE '%$key%' ORDER BY id DESC"; // Sử dụng LIKE thay vì REGEXP
+        $this->execute($sql);
+        
+        $data = array(); // Khởi tạo mảng $data trước khi sử dụng
+    
+        if($this->num_rows() == 0){
+            $data = 0;
+        } else {
+            while($datas = $this->getData()){
+                $data[] = $datas;
+            }
+        }
+        return $data;
+    }
+    
+
 }
 ?>
