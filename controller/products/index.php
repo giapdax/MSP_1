@@ -116,6 +116,61 @@ switch($action){
         require_once('trangchu.php');
         break;
     }
+    case 'add_to_cart': {
+        if(isset($_POST['product_id'])) { // Sử dụng $_POST để lấy ID sản phẩm từ form
+            $id = $_POST['product_id']; // Lấy ID sản phẩm từ form
+            $tblTable = "products";
+            $product = $db->getDataID($tblTable, $id);
+            $user_id = $_SESSION['user_id'];
+            $user = $db->getDataID("users", $user_id);
+    
+            $id_favor = $product['id'];
+            $user_favor = $user['id'];
+            
+            $check = $db->CheckExistCart("cart", $id_favor, $user_id);
+            if(isset($thongbao)): ?>
+                <div id="notification"><?php echo $thongbao; ?></div>
+            <?php endif;
+            
+            if($check == null) {
+                if($db->AddFavor($id_favor, $user_id )) {
+                    echo "success";
+                } else {
+                    echo "Sorry, there was an error adding your product."; // Thông báo lỗi khi thêm sản phẩm không thành công
+                }
+            } else {
+                $thongbao = "Sản phẩm đang trong mục ưa thích.";
+                echo $thongbao;
+                return $thongbao;
+            }
+        }
+        else {
+            echo "Product ID not set."; // Xử lý khi không có ID sản phẩm
+        }
+        break;
+    }
+    case 'deleteFavor':{
+        if(isset($_POST['deleteFavor'])) {
+            $id = $_POST['cart_id'];
+            if($db->DeleteFavor($id)){
+                header('location: indexgiap.php?controller=dbproducts&action=cart');
+                exit;
+            } else {
+                echo "Failed to delete."; // Xử lý khi không xóa được sản phẩm
+            }
+        }else {
+            echo "Product ID is not set."; // Xử lý khi không có ID sản phẩm
+        }
+        break;
+    }
+    case 'cart':{
+        $user_id = $_SESSION['user_id'];
+        $tblTable = "cart";
+        $data  = $db->getDataCart($user_id);
+        require_once('view/products/cart.php');
+        break;
+        
+    }
     default: {
         require_once('view/products/list.php');
         break;

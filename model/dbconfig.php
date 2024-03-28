@@ -87,6 +87,49 @@ class Database{
         return $this->execute($sql);
     }
     // phương thức tìm kiếm dữ liệu 
+    public function getDatafrom($table, $column, $id){
+        $sql ="SELECT * FROM $table WHERE $column = '$id'";
+        $this->execute($sql);
+        if($this->num_rows()!=0){
+            $result = mysqli_fetch_array($this->result);
+        }
+        else{
+            $result = 0;
+        }
+        return $result;
+    }
+    public function getDataCart($id){
+        $sql ="SELECT * FROM cart WHERE user_id= $id";
+        $this->execute($sql);
+        $data = array(); // Khởi tạo mảng để lưu dữ liệu
+        if($this->num_rows() > 0){ // Kiểm tra xem có hàng nào được trả về không
+            while($row = mysqli_fetch_array($this->result)){
+                $data[] = $row; // Thêm hàng vào mảng dữ liệu
+            }
+        }
+        return $data;
+    }
+    public function AddFavor($id_pro,$id_user) {
+        $sql = "INSERT INTO cart(product_id, user_id) 
+                VALUES ('$id_pro', '$id_user')";
+        return $this->execute($sql);
+    }
+
+    public function CheckExistCart($table, $id, $user_id){
+        $sql ="SELECT * FROM $table WHERE product_id = '$id' and user_id = '$user_id'";
+        $this->execute($sql);
+        if($this->num_rows()!=0){
+            $data = mysqli_fetch_array($this->result);
+        }
+        else{
+            $data = 0;
+        }
+        return $data;
+    }
+    public function DeleteFavor($id){
+        $sql = "DELETE FROM cart WHERE cart_id = $id";
+        return $this->execute($sql);
+    }
     public function SearchData($table, $key){
         $sql = "SELECT * FROM $table WHERE name LIKE '%$key%' ORDER BY id DESC"; // Sử dụng LIKE thay vì REGEXP
         $this->execute($sql);

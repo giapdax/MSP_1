@@ -81,6 +81,13 @@ $dataPage = array_slice($data, $startIndex, $a);
                         <img src="<?php echo $value['img']; ?>" alt="">
                     </a>
                     <div class="name"><?php echo $value['name']; ?></div>
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                <form action="trangchu.php?controller=dbproducts&action=add_to_cart" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" value="<?php echo $value['id']; ?>"> <!-- Input hidden để lưu ID sản phẩm -->
+                    <button type="submit" name="add_to_cart">Favorite</button> <!-- Sử dụng button thay vì link -->
+                </form>
+        
+        <?php endif; ?>
                 </div>
             <?php
             }

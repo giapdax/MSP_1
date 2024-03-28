@@ -39,6 +39,12 @@
         <a href="trangchu.php">Trang Chủ</a>
         <a href="introduce.php">Giới Thiệu</a>
         <a href="contact.php">Liên Hệ</a>
+        <?php
+            if(
+                isset($_SESSION['user_id'])
+            ){ ?>
+            <a href="indexgiap.php?controller=dbproducts&&action=cart">Ưa Thích</a>
+        <?php } ?>
 <!--        <a href="#">Đơn Hàng</a>-->
 <!--        Role Admin-->
         <?php
