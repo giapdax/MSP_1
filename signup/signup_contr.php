@@ -16,7 +16,7 @@
         return getEmail($pdo,$email);
     }
 
-    function addUser(object $pdo,string $username,string $password,string $email) : void
+    function addUser(object $pdo,string $username,string $password,string $email,string $activate_token) : void
     {
-        createUser($pdo,$username,$password,$email,1);
+        createUser($pdo,$username,$password,$email,1,$activate_token);
     }

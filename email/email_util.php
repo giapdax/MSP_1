@@ -7,7 +7,7 @@ require '../PHPMailer-master/PHPMailer-master/src/Exception.php';
 require '../PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
 require '../PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
-    function emailService($receiver,$body)
+    function emailService($subject,$receiver,$body)
     {
         try {
             $mail = new PHPMailer(true);
@@ -22,12 +22,22 @@ require '../PHPMailer-master/PHPMailer-master/src/SMTP.php';
             $mail->setFrom("rollnguyen57@gmail.com","Mailer");
             $mail->addAddress($receiver);
             $mail->isHTML(true);
-            $mail->Subject = 'RESET YOUR PASSWORD FOR APPLICATION';
+            $mail->Subject = $subject;
             $mail->Body = $body;
             $mail->send();
         }catch (Exception $exception){
             echo $exception->getMessage();
         }
+    }
+
+    function resetPasswordEmail($receiver,$body){
+        $subject = "RESET PASSWORD FOR YOUR APPLICATION";
+        return emailService($subject,$receiver,$body);
+    }
+
+    function activateAccountEmail($receiver,$body){
+        $subject = "Activate account for your application";
+        return emailService($subject,$receiver,$body);
     }
 
 

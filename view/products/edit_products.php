@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="editproducts">
-            
+        <a href="indexgiap.php?controller=dbproducts&action=edit"></a>
             <h3 style="text-align: center;">UPDATE PRODUCT</h3>
 
             <form action="" method="POST" enctype="multipart/form-data">

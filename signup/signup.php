@@ -4,15 +4,20 @@
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
         $email = $_POST['email'];
+        $token = bin2hex(random_bytes(16));
+        $expired = date('U') + 300;
+        $url = "Hi there, click on this <a href=http://localhost/project/MSP_1/verify_account/verify_account_form.php?token=". $token
+        .">Link</a> to activate account for your application" ;
         try {
             $pdo = require_once  '../database.php';
             require_once 'signup_model.php';
             require_once 'signup_contr.php';
+            require_once "../email/email_util.php";
             $errors = [];
             if (isMatchPasswordAndConfirmPassword($password,$confirm_password)){
                 $errors['confirm_password'] = "Password do not match";
             }
-            if (isExistUsername($pdo,$username)){
+            if (isExistsUsername($pdo,$username)){
                 $errors['username_exist'] = "Username already exist";
             }
             if (isExistEmail($pdo,$email)){
@@ -32,7 +37,8 @@
                 header("Location:signupform.php");
                 die();
             }
-            addUser($pdo,$username,$password,$email);
+            addUser($pdo,$username,$password,$email,$token);
+            activateAccountEmail($email,$url);
             header("Location:signupform.php?signup=success");
         }catch (PDOException $exception){
             die("Query failed: " . $exception->getMessage());

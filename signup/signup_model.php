@@ -32,15 +32,16 @@
 //        return $stmt->fetch(PDO::FETCH_ASSOC);
 //    }
 
-    function createUser(object $pdo,string $username,string $password,string $email,int $role_id) : void
+    function createUser(object $pdo,string $username,string $password,string $email,int $role_id,string $activate_token) : void
     {
-        $sql = "INSERT INTO users(username,pwd,email,role_id) 
-                    VALUES (:username,:password,:email,:role_id);";
+        $sql = "INSERT INTO users(username,pwd,email,role_id,activate_token) 
+                    VALUES (:username,:password,:email,:role_id,:activate_token);";
         $stmt = $pdo->prepare($sql);
         $hash_password = password_hash($password,PASSWORD_DEFAULT);
         $stmt->bindValue(":username",$username,PDO::PARAM_STR);
         $stmt->bindValue(":password",$hash_password,PDO::PARAM_STR);
         $stmt->bindValue(":email",$email,PDO::PARAM_STR);
         $stmt->bindValue(":role_id",$role_id,PDO::PARAM_INT);
+        $stmt->bindValue(":activate_token",$activate_token,PDO::PARAM_STR);
         $stmt->execute();
     }

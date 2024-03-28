@@ -53,8 +53,8 @@ $pagination = new Pagination(['total' => count($data), 'limit' => 10]); // Giả
                     $value = $data[$i]; ?>
                    <div class="item">
                     <a href="javascript:void(0);"
-                        onclick="<?php echo isset($_SESSION['user_id']) ?
-                            "redirectToInformation('". $value['img'] . "')" : "redirectToLogin()"; ?>">
+                        onclick="
+                            redirectToInformation('<?php $value['img']; ?>')">
                         <img src="<?php echo $value['img']; ?>" alt="">
                     </a>
                     <div class="name"><?php echo $value['name']; ?></div>

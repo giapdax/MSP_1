@@ -1,0 +1,2 @@
+RewriteEngine On
+    ErrorDocument 404 http://localhost/project/MSP_1/404.php

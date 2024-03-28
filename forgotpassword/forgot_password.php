@@ -6,6 +6,7 @@
             .">Link</a> to resest your password for application" ;
         $userEmail = $_POST['email'];
         try {
+            
             $pdo = require_once "../database.php";
             require_once 'forgot_password_model.php';
             require_once 'forgot_password_contr.php';
@@ -21,12 +22,11 @@
                 header("Location:forgot_password_form.php");
                 die();
             }
-
             deleteEmailExistPwdReset($pdo,$userEmail);
 
             addRecordPwd($pdo,$userEmail,$token,$expired);
             //Send email
-            emailService($userEmail,$url);
+            resetPasswordEmail($userEmail,$url);
             header("Location:forgot_password_form.php?forgot_password=success");
 
         }catch (PDOException $exception){
