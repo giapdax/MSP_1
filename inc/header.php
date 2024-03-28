@@ -20,10 +20,22 @@
 <header>
     <div class="logo"> <img src="images/logo_web.png" alt="Logo" width="100" height="100"></div>
     <nav class="navbar">
-        <div class="search-box">
-            <img src="images/search.png" alt="Search Icon" width="20" height="20">
-            <input type="text" placeholder="Tìm kiếm...">
-        </div>
+
+    <!-- <form action="trangchu.php" method="GET">
+        <input type="hidden" name="controller" value="dbproducts">
+        <input type="hidden" name="action" value="tim-kiem">
+        <table>
+            <tr>  
+                <td><img src="images/search.png" alt="Search Icon" width="20" height="20"></td>
+                <td><input type="text" name="tukhoa" placeholder="Tìm kiếm..."></td>
+                <td><input type="submit" value="Tìm Kiếm"></td>
+            </tr>
+        </table>
+    </form> -->
+
+
+</div>
+
         <a href="trangchu.php">Trang Chủ</a>
         <a href="introduce.php">Giới Thiệu</a>
         <a href="contact.php">Liên Hệ</a>

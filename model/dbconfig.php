@@ -86,5 +86,23 @@ class Database{
         $sql = "DELETE FROM $table WHERE id='$id'";
         return $this->execute($sql);
     }
+    // phương thức tìm kiếm dữ liệu 
+    public function SearchData($table, $key){
+        $sql = "SELECT * FROM $table WHERE name LIKE '%$key%' ORDER BY id DESC"; // Sử dụng LIKE thay vì REGEXP
+        $this->execute($sql);
+        
+        $data = array(); // Khởi tạo mảng $data trước khi sử dụng
+    
+        if($this->num_rows() == 0){
+            $data = 0;
+        } else {
+            while($datas = $this->getData()){
+                $data[] = $datas;
+            }
+        }
+        return $data;
+    }
+    
+
 }
 ?>

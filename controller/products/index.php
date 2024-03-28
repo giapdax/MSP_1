@@ -104,6 +104,18 @@ switch($action){
         require_once('view/products/list.php');
         break;
     }
+
+    case 'tim-kiem':{
+        if(isset($_GET['tukhoa'])){
+            $key= $_GET['tukhoa'];
+            $tblTable="products";
+            // lấy dữ liệu từ model
+            $data_Search= $db->SearchData($tblTable,$key);
+            
+        }
+        require_once('trangchu.php');
+        break;
+    }
     default: {
         require_once('view/products/list.php');
         break;

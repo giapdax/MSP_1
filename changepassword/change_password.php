@@ -20,7 +20,7 @@
             if($newPassword !== $confirmPassword){
                 $errors['Password_does_not_match'] = 'Confirm password does not match';
             }
-            if (strpos($newPassword, ' ') !== false) {
+            if (strpos($password, ' ') !== false) {
                 $errors['invalid_password'] = 'Password must not contain spaces';
             }
             if($errors){

@@ -27,8 +27,8 @@
             background-color: #f9f9f9;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-left: 20px; /* Thêm margin để tạo khoảng cách với thông tin liên hệ */
+            padding: 50px;
+            margin-left: 40px; /* Thêm margin để tạo khoảng cách với thông tin liên hệ */
         }
 
         /* Định dạng cho tiêu đề */

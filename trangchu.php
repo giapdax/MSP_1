@@ -4,14 +4,35 @@ require_once 'pagination.php'; // Import class Pagination
 
 // Lấy dữ liệu sản phẩm
 require_once('indexgiap.php');
-$a = 5; // quy định số sản phẩm của mỗi trang 
+$a = 5; // Số sản phẩm mỗi trang 
 $tblTable = "products";
-$data = $db->getAllData($tblTable);
+
+// Khởi tạo biến để kiểm tra tìm kiếm
+$searchNotFound = false;
+
+// Xử lý tìm kiếm
+$key = isset($_GET['tukhoa']) ? $_GET['tukhoa'] : ''; // Lấy từ khóa tìm kiếm từ URL
+if (!empty($key)) {
+    $data = $db->SearchData($tblTable, $key); // Tìm kiếm nếu có từ khóa
+    // Kiểm tra xem dữ liệu từ tìm kiếm có tồn tại không
+    if (empty($data)) {
+        $searchNotFound = true; // Đặt biến kiểm tra tìm kiếm không thành công
+        $data = $db->getAllData($tblTable); // Lấy tất cả dữ liệu nếu không có từ khóa
+    }
+} else {
+    $data = $db->getAllData($tblTable); // Lấy tất cả dữ liệu nếu không có từ khóa
+}
 
 // Khởi tạo class Pagination với dữ liệu và cấu hình
 $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả sử mỗi trang có 5 sản phẩm
-?>
 
+// Lấy chỉ số bắt đầu và kết thúc của dữ liệu trang hiện tại
+$startIndex = ($pagination->getCurrentPage() - 1) * $a;
+$endIndex = min($startIndex + $a, count($data));
+
+// Chỉ lấy dữ liệu của trang hiện tại từ $startIndex đến $endIndex
+$dataPage = array_slice($data, $startIndex, $a);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +46,21 @@ $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả
     <link rel="stylesheet" href="css/trangchu.css"> <!-- Liên kết với file CSS -->
 </head>
 <body>
-    
+<div class="timkiem">
+    <form action="" method="GET">
+        <table>
+        <tr>
+            <input type="hidden" name="controller" value="dbproducts">
+            <td><input type="text" name="tukhoa" placeholder="Nhập từ khóa"></td>
+            <td><input type="submit" value="Tìm kiếm"></td>
+        </tr>
+        </table>
+        <input type="hidden" name="action" value="tim-kiem">
+        <?php if ($searchNotFound): ?>
+        <p>Không tìm thấy kết quả cho từ khóa "<?php echo $key; ?>"</p>
+    <?php endif; ?>
+    </form>
+</div>  
 <div id="wrapper">
     <div id="banner">
         <div class="box-left">
@@ -38,24 +73,18 @@ $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả
         <h2>SẢN PHẨM CỦA CHÚNG TÔI</h2>
         <ul id="list-products">
             <?php
-            require_once 'pagination.php'; // Import class Pagination
-            // Lấy trang hiện tại từ class Pagination
-            $currentPage = $pagination->getCurrentPage();
-            // Tính chỉ số bắt đầu của sản phẩm trong trang hiện tại
-            $startIndex = ($currentPage - 1) * $a;
-            // Tính chỉ số kết thúc của sản phẩm trong trang hiện tại
-            $endIndex = min($startIndex + $a, count($data));
-
-            // Lặp qua dữ liệu sản phẩm chỉ hiển thị từ $startIndex đến $endIndex
-            for ($i = $startIndex; $i < $endIndex; $i++) {
-                $value = $data[$i]; ?>
+            // Lặp qua dữ liệu sản phẩm để hiển thị
+            foreach ($dataPage as $value) {
+            ?>
                 <div class="item">
-                <a href="javascript:void(0);" onclick="redirectToInformation('<?php echo $value['img']; ?>')">
+                    <a href="javascript:void(0);" onclick="redirectToInformation('<?php echo $value['img']; ?>')">
                         <img src="<?php echo $value['img']; ?>" alt="">
-                </a>
+                    </a>
                     <div class="name"><?php echo $value['name']; ?></div>
                 </div>
-            <?php } ?>
+            <?php
+            }
+            ?>
         </ul>
     </div>
 </div>
@@ -72,7 +101,6 @@ $pagination = new Pagination(['total' => count($data), 'limit' => $a]); // Giả
 <div class="pagination-container">
     <?php
     // Hiển thị phân trang
-    require_once 'pagination.php'; // Import class Pagination
     echo $pagination->getPagination();
     ?>
 </div>

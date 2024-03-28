@@ -13,7 +13,7 @@
     <style>
         /* CSS cho phần giới thiệu */
         .introduction {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
