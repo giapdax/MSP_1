@@ -11,8 +11,15 @@
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
+        <div class="editproducts">
+        <a href="indexgiap.php?controller=dbproducts&action=edit"></a>
+            <h3 style="text-align: center;">UPDATE PRODUCT</h3>
+
+=======
         <div class="edit-products">
             <h3 class="text-center">Cập Nhật Sản Phẩm</h3>
+>>>>>>> ba52c3ed1f3b32ebb29b530edaaa1ddf3bfdb4ae
             <form action="" method="POST" enctype="multipart/form-data">
                 <table class="table">
                     <tr>

@@ -39,3 +39,6 @@ require '../PHPMailer-master/PHPMailer-master/src/SMTP.php';
         $subject = "Activate account for your application";
         return emailService($subject,$receiver,$body);
     }
+
+
+    

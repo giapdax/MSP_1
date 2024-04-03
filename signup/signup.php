@@ -6,7 +6,7 @@
         $email = $_POST['email'];
         $token = bin2hex(random_bytes(16));
         $expired = date('U') + 300;
-        $url = "Hi there, click on this <a href=http://localhost/MSP/verify_account/verify_account_form.php?token=". $token
+        $url = "Hi there, click on this <a href=http://localhost/project/MSP_1/verify_account/verify_account_form.php?token=". $token
         .">Link</a> to activate account for your application" ;
         try {
             $pdo = require_once  '../database.php';

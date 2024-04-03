@@ -32,7 +32,7 @@
             }
                 $email = $result['email'];
                 $hash_password = password_hash($password,PASSWORD_DEFAULT);
-                $sql = "UPDATE users SET password = :password WHERE email = :email";
+                $sql = "UPDATE users SET pwd = :password WHERE email = :email";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindValue(':email',$email,PDO::PARAM_STR);
                 $stmt->bindValue(':password',$hash_password,PDO::PARAM_STR);

@@ -43,7 +43,7 @@
     <div class="error-container">
       <h1>404</h1>
       <p>Oops! Page not found.</p>
-      <p>Return to <a href="./trangchu.php">home</a>.</p>
+      <p>Return to <a href="../trangchu.php">home</a>.</p>
     </div>
   </div>
 </body>

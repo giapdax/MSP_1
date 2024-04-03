@@ -10,7 +10,8 @@
             //Exception
             $errors = [];
             $result = getUserByUsername($pdo,$username);
-            $user_password = (string) $result['password'];
+            $user_password = (string) $result['pwd'];
+
             if(!isValidateUsername($result)){
                 $errors['login_failed'] = "Incorrect_information";
             }

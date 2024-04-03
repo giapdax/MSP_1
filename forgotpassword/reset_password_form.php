@@ -1,6 +1,7 @@
 <?php
     require_once '../config.php';
     require 'reset_password_view.php';
+    require 'reset_password_model.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

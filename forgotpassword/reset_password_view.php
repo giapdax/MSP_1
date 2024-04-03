@@ -9,7 +9,7 @@
             echo '</br>';
 
             foreach ($errors as $error){
-                echo  '<p class="form-error">' .$error .'</p>';
+                echo '<p class="form-error">' .$error . '</p>';
             }
             unset($_SESSION['reset_password_error']);
         }else if (isset($_GET['reset_password']) and $_GET['reset_password'] === 'success'){
